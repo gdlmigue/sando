@@ -1,0 +1,7 @@
+[Base]
+AccessKeyId = LTAI5tBXh7wv1cTC1KmBASqu
+AccessKeySecret = MKJk1narTu0HyWyic7Y7LYraJup5uV
+Endpoint = http://5799651911776518.mns.cn-shanghai.aliyuncs.com/
+
+[Optional]
+SecurityToken=$SecurityToken
