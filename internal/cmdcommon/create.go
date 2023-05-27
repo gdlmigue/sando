@@ -8,5 +8,11 @@ func SetCreateFlags(cmd *cobra.Command, prefix string) {
 
 	cmd.Flags().StringP("username", "u", "", prefix+"test")
 	cmd.Flags().StringP("password", "p", "", prefix+"test")
+}
 
+func SetCreateBatchFlags(cmd *cobra.Command) {
+	cmd.Flags().SortFlags = false
+
+	cmd.Flags().StringP("file", "f", "", "")
+	cmd.Flags().StringP("queue", "q", "", "")
 }
