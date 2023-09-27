@@ -10,6 +10,13 @@ func SetCreateFlags(cmd *cobra.Command, prefix string) {
 	cmd.Flags().StringP("password", "p", "", prefix+"test")
 }
 
+func SetCreateReportFlags(cmd *cobra.Command) {
+	cmd.Flags().SortFlags = false
+
+	cmd.Flags().StringP("startDate", "s", "", "")
+	cmd.Flags().StringP("endDate", "e", "", "")
+}
+
 func SetCreateBatchFlags(cmd *cobra.Command) {
 	cmd.Flags().SortFlags = false
 

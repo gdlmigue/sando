@@ -1,6 +1,7 @@
 package root
 
 import (
+	"sando/cmd/reports"
 	"sando/cmd/secrets"
 	"sando/cmd/sqs"
 
@@ -28,4 +29,5 @@ func NewCmdRoot() *cobra.Command {
 func addChildCommands(cmd *cobra.Command) {
 	cmd.AddCommand(secrets.NewCmdSecrets())
 	cmd.AddCommand(sqs.NewCmdSQS())
+	cmd.AddCommand(reports.NewCmdReports())
 }

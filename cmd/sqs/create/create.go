@@ -128,6 +128,7 @@ func getQueueURL(queue string) (*string, error) {
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println(*res.QueueUrl)
 	return res.QueueUrl, nil
 }
 
