@@ -98,6 +98,7 @@ func sendBatch(batch []*sqs.SendMessageBatchRequestEntry, queueURL *string) erro
 		Region: aws.String("us-east-1"),
 	}))
 
+	count_msgs := 0
 	batchEntry := []*sqs.SendMessageBatchRequestEntry{}
 	for i, entry := range batch {
 		if i%10 == 0 && i != 0 {
@@ -113,7 +114,23 @@ func sendBatch(batch []*sqs.SendMessageBatchRequestEntry, queueURL *string) erro
 			fmt.Println(out)
 		}
 		batchEntry = append(batchEntry, entry)
+		count_msgs += 1
 	}
+
+	if batchEntry != nil {
+		cmdutil.Warn("Sending last batch\n")
+		out, err := svc.SendMessageBatch(&sqs.SendMessageBatchInput{
+			Entries:  batchEntry,
+			QueueUrl: queueURL,
+		})
+		if err != nil {
+			return err
+		}
+		batchEntry = nil
+		fmt.Println(out)
+	}
+
+	fmt.Println(count_msgs, "Total msgs sent!")
 	return nil
 }
 
